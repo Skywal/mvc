@@ -1,0 +1,13 @@
+# default encoding for all files
+AddDefaultCharset utf-8
+
+# configuration module on
+RewriteEngine on
+
+# check is it not a file
+RewriteCond %{REQUEST_FILENAME} !-f
+# check is it not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# redirect to index.php
+RewriteRule ^(.*)$ index.php
