@@ -1,6 +1,10 @@
 <?php
   require_once 'application/lib/dev.php';
 
+  /**
+   * Цей файл - головна точка входу сайту
+   */
+
   use application\core\Router;
 
   /**
