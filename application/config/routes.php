@@ -19,7 +19,5 @@
       'controller' => 'account',
       'action' => 'register',
     ],
-    
-  ];
 
-?>
+  ];

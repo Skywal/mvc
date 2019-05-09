@@ -5,12 +5,14 @@ namespace application\controllers;
 use application\core\Controller;
 
 class AccountController extends Controller {
+        
     public function loginAction(){
-        echo 'Сторінка входу';
+        $this->view->render('Log in');
     }
     public function registerAction(){
-        echo 'Сторінка реєстрації';
-        debug($this->route);
+        $this->view->layout = 'custom';
+
+        $this->view->render('Register');
     }
 
 }
