@@ -1,9 +1,14 @@
 <?php
-  //errors display
+  /**
+   * errors display
+   */
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
 
-  // debugging some stuff
+  /**
+   * debugging some stuff
+   * @param $str
+   */
   function debug($str){
     echo '<pre>';
     var_dump($str);
