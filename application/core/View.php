@@ -6,15 +6,18 @@ namespace application\core;
 
 class View {
     /**
-     * @var шлях до конкретного екземпляру View
+     * шлях до конкретного екземпляру View
+     * @var
      */
     public $path;
     /**
-     * @var шаблон сторінки (шапка і всі метатеги і закриваючі теги)
+     * шаблон сторінки (шапка і всі метатеги і закриваючі теги)
+     * @var
      */
     public $layout = 'default';
     /**
-     * @var поточна сторінка на якій знаходимося
+     * поточна сторінка на якій знаходимося
+     * @var
      */
     public $route;
 
@@ -26,17 +29,34 @@ class View {
 
     /**
      * Вивід шаблону на показ
-     * @param $title Заголовок сторінки
-     * @param array $vars Дані які потрібно відобразити на сторінці
+     * Заголовок сторінки
+     * @param $title
+     * Дані які потрібно відобразити на сторінці
+     * @param array $vars
      */
     public function render($title, $vars = []){
         if(file_exists('application/views/' . $this->path . '.php')){
             ob_start();
+
+            extract($vars);
+
             require 'application/views/' . $this->path . '.php';
             $content = ob_get_clean();
+
             require 'application/views/layouts/' . $this->layout . '.php';
         } else {
             echo 'Вид не знайдено ' . $this->path;
         }
+    }
+
+    public static function errorCode($code){
+        http_response_code($code);
+        require 'application/views/errors/' . $code . '.php';
+        exit;
+    }
+
+    public function redirect($url){
+        header('location: ' . $url);
+        exit;
     }
 }

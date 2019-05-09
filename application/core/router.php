@@ -2,6 +2,8 @@
 
 namespace application\core;
 
+use application\core\View;
+
 class Router{
     protected $routes = [];
     protected $params = [];
@@ -46,13 +48,15 @@ class Router{
                     $controller = new $path($this->params); // створюємо новий клас у випвдку знаходження шляху, класу і відповідного екшину
                     $controller->$action();
                 } else {
-                    echo 'Не знайдено екшен' . $action;
+                    View::errorCode(404);
                 }
             } else {
-                echo 'Не знайдено контроллер: ' . $path;
+                View::errorCode(404);
+//                echo 'Не знайдено контроллер: ' . $path;
             }
         } else {
-            echo 'Маршрут не знайдено';
+            View::errorCode(404);
+//            echo 'Маршрут не знайдено';
         }
     }
 }

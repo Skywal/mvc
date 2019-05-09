@@ -20,7 +20,7 @@ abstract class Controller {
         $this->view = new View($route);
         $this->before();
     }
-    
+
     public function before(){
 
     }
