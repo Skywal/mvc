@@ -12,15 +12,23 @@ class MainController extends Controller {
 //            'name' => 'Vasia',
 //            'age' => 4,
 //        ];
-        $db = new Database;
 
-        $params = [
-            'id' => 2
-        ];
+//        $db = new Database;
+//
+//        $params = [
+//            'id' => 2
+//        ];
+//
+//        $data = $db->row('SELECT name FROM users WHERE id = :id', $params);
 
-        $data = $db->row('SELECT name FROM users WHERE id = :id', $params);
+        //debug($data);
 
-        debug($data);
-        $this->view->render('Main page');
+		$result = $this->model->getNews();
+
+		$vars = [
+			'news' => $result
+		];
+
+        $this->view->render('Main page', $vars);
     }
 }
