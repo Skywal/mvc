@@ -49,14 +49,35 @@ class View {
         }
     }
 
+	/**
+	 * для виводу сторінок з помилками типу 404
+	 * @param $code
+	 */
     public static function errorCode($code){
         http_response_code($code);
         require 'application/views/errors/' . $code . '.php';
         exit;
     }
 
+	/**
+	 * перенаправлення на іншу адресу
+	 * @param $url
+	 */
     public function redirect($url){
         header('location: ' . $url);
         exit;
     }
+
+	/**
+	 * вивід повідомлення через ajax скрипт
+	 * @param $status
+	 * @param $message
+	 */
+    public function message($status, $message){
+		exit(json_encode(['status' => $status, 'message'=>$message]));
+	}
+
+	public function redirectJs($url){
+		exit(json_encode(['url' => $url]));
+	}
 }
