@@ -24,7 +24,6 @@ class MainController extends Controller {
         //debug($data);
 
 		$result = $this->model->getNews();
-
 		$vars = [
 			'news' => $result
 		];
