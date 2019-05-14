@@ -24,7 +24,6 @@ class View {
     public function __construct($route) {
         $this->route = $route;
         $this->path = $route['controller'] . '/' . $route['action'];
-//        debug($this->path);
     }
 
     /**
